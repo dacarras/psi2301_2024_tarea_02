@@ -1,0 +1,229 @@
+---
+title: "Tarea 2"
+author: "[indique su correo, sin corchetes]"
+output:
+  html_document
+---
+
+
+---
+
+# Instrucciones
+
+- La siguiente tarea contiene una serie de ejercicios donde se requiere calcular y reportar medidas de tendencia central, de posición, de dispersión, tablas y producir gráficos para visualizar la distribución de los valores de una variable.
+
+- Vamos a emplear una copia de los datos del estudio de Poli victimización de Jóvenes, realizada en Chile en Octubre de 2017.
+
+- Los datos que vamos a emplear son una versión recortada de los datos y con nombres adaptados, que se espera sean más amigables.
+
+- El archivo que contiene los datos que vamos a emplear ya está cargado en el proyecto en posit y se llama:
+
+```
+datos_poli_2017.csv
+```
+
+- El libro de códigos de la base de datos que vamos a emplear, se llama:
+
+```
+datos_poli_2017_codebook.xlsx
+```
+
+- **Advertencia**: Los datos originales provienen de una muestra probabilística. Este tipo de datos, permite realizar inferencias a la población, si la información del diseño es empleada para producir estimaciones. En este ejercicio con fines ilustrativos, vamos a ignorar este aspecto, y solo vamos a producir resultados descriptivos.
+
+# Referencias
+
+Alvarez, E., Guajardo, H., & Messen, R. (1986). Estudio exploratorio sobre una escala de autoevaluación para la depresión en niños y adolescentes. Revista Chilena de Pediatria, 57(1), 21–25. https://doi.org/10.4067/s0370-41061986000100003
+
+Birleson, P., Hudson, I., Buchanan, D. G., & Wolff, S. (1987). Clinical Evaluation of a Self‐Rating Scale for Depressive Disorder in Childhood (Depression Self‐Rating Scale). Journal of Child Psychology and Psychiatry, 28(1), 43–60. https://doi.org/10.1111/j.1469-7610.1987.tb00651.x
+
+Consejo Nacional de la Infancia. (2018). Análisis Multivariable de Estudio de Polivictimización en Niños, Niñas y Adolescentes realizado por la Pontificia Universidad Católica de Chile. http://biblioteca.digital.gob.cl/handle/123456789/3535
+
+Denda, K., Kako, Y., Kitagawa, N., & Koyama, T. (2006). Assessment of depressive symptoms in Japanese school children and adolescents using the birleson depression self-rating scale. International Journal of Psychiatry in Medicine, 36(2), 231–241. https://doi.org/10.2190/3YCX-H0MT-49DK-C61Q
+
+
+MINSAL. (2013). Guía Clínica para el tratamiento de adolescentes de 10 a 14 años con Depresión. https://www.guiadisc.com/wp-content/pdfs/guia-clinica-tratamiento-depresion-adolescentes.pdf
+
+Subsecretaria Prevención del Delito. (2018). Primera Encuesta Nacional de Polivictimización en Niñas, Niños y Adolescentes: Presentación de Resultados.
+
+---
+
+# Ejercicios
+
+
+## Ejercicio 1. Abrir los datos.
+
+- Abra los datos `datos_poli_2017.csv`, empleando la función `read.csv()`. Aloje los datos en un objeto llamado `data_poli_full` .
+
+```{r}
+
+# Escriba su código de respuesta aquí
+
+```
+
+## Ejercicio 2. Vista previa de los datos.
+
+- **¿Cuántas variables, y cuántos casos posee la base de datos original?**
+- Indique su respuesta bajo el código.
+
+```{r}
+
+# Escriba su código de respuesta aquí
+
+
+```
+
+- Respuesta 
+  + Casos: [escriba aquí la cantidad de casos, y borre los corchetes]
+  + Variables: [escriba aquí la cantidad de variables, y borre los corchetes]
+
+## Ejercicio 3. Generar muestra aleatoria
+
+- Al igual que en la tarea 1, queremos que se produzcan resultados que sean únicos para cada uno de ustedes. De esta forma, les solicitamos que generen una muestra de datos que sea única a su rut. En esta sección solo tendrá que reemplazar el valor de `set.seed()`, de modo que se genere una muestra de datos que fuera única. Recuerde que **todos los ejercicios** siguientes, **requieren** que **se empleen los datos generados**.
+
+
+```{r}
+
+# Instrucciones: reemplace el valor 123456789 "set.seed()", e incluya su RUT
+#                sin dígito verificador como argumento para fijar seed.
+#                Genere la muestra aleatoria solicitada.
+#                Esta muestra contiene el 50% de los datos originales,
+#                extrayendo 50% de cada comuna.
+
+set.seed(123456789)  
+
+# solo reemplazar el set.seed, y 
+# conservar el resto del código.
+
+data_poli <- dplyr::slice_sample(data_poli_full, prop = .5, by = comu)
+
+```
+
+## Ejercicio 4. Visualizar distribución de puntajes
+
+- La variable `dep`, tiene los puntajes de depresión de la escala de Escala de Detección Depresión Infantil de Birleson (EDIB) (Birleson et al., 1987). Esta escala varía de 0 a 36 puntos. En Chile, se emplea como punto de corte a los 19 puntos (MINSAL, 2013). Con este criterio, se indica que personas jóvenes con 19 o más puntos podrían tener depresión.
+
+- Genere un gráfico que permita visualizar la distribución de  los puntajes de depresión observados.
+
+- Incluya un título descriptivo y los ejes correspondientes del gráfico.
+
+
+```{r}
+
+# Escriba su código de respuesta aquí
+
+
+```
+
+
+
+## Ejercicio 5. Medidas de tendencia central
+
+- Calcule medidas de tendencia central para el total de los datos.
+
+- Incluya a la media, mediana, y a los percentiles 10, 20, 30, 40, 50, 60, 70, 80 y 90.
+
+
+```{r}
+
+# Escriba su código de respuesta aquí
+
+```
+
+- Respuesta 
+  + Media: [escriba aquí su respuesta y borre los corchetes]
+  + Mediana: [escriba aquí su respuesta y borre los corchetes]
+  + Percentiles: [escriba aquí su respuesta y borre los corchetes]
+
+## Ejercicio 6. Interpretación de gráfico y medida de tendencia central.
+
+- **¿Qué tipo de distribución observa?** Recuerde referir a la distribución de la variable específica evaluada. Haga referencia al gráfico y a las medidas de tendencia central calculadas. Incluya en su respuesta si es una distribución simétrica o asimétrica, y si se observa una asimetría, indique si esta es positiva o negativa.
+
+- **Respuesta**
+  - `#....indicar su respuesta en esta línea, y borrar este comentario.`
+
+## Ejercicio 7a. Recodificación del puntaje 
+
+- Empleando al valor 19 como criterio de corte clasifique a todos los casos con y sin depresión.
+
+- Para estos fines, genere una variable *indicadora* o *dummy*, donde el valor 1 indique depresion (puntajes mayor o igual a 19 puntos), y el valor indique sin depresiones (puntajes menores a 19). Atención que en la variable recodificada los valores iguales a 19 deben ser considerados como `con depresión`. Guarde esta variable como una nueva columna dentro de data_poli. Incluya en su código una tabla que confirme la correcta codificación en la nueva variable en relación a la original.
+
+- Se sugiere llamar a la variable creada `dep_d`
+
+```{r}
+# Escriba su código de respuesta aquí
+
+```
+
+## Ejercicio 7b. Recodificación de variable sexo
+
+La variable sexo tiene valores 1 y 2. Revise el libro de códigos y cree una variable *indicadora* o *dummy*, llamada `mujer` donde el valor 1 indique que el caso corresponde a una mujer. Guarde esta variable como una nueva columna dentro de data_poli. Incluya en su código una tabla que confirme la correcta codificación en la nueva variable en relación a la original.
+
+```{r}
+# Escriba su código de respuesta aquí
+
+
+```
+
+## Ejercicio 8. Proporción.
+
+- **¿Qué proporción de casos tiene depresión?**
+
+
+
+- Una vez realizada la recodificación, calcule la proporción de casos en cada categoría.
+
+- Finalmente, reporte los resultados encontrados en texto, bajo el código generado.
+
+```{r}
+
+# Escriba su código de respuesta aquí
+
+
+```
+
+- **Respuesta**
+  - Se observa ... `#....indicar su respuesta en esta línea, y borrar este comentario.`
+
+## Ejercicio 9. Dispersión
+
+- Estudios previos sobre la escala de Birleson et al (1987) han encontrado patrones diferentes en las respuestas de hombres y mujeres (e.g., Denda et al, 2006). En particular, se ha encontrado mayor dispersión en los puntajes por parte de las mujeres, y mayores puntajes totales. Calcule los descriptivos correspondientes para mujeres y hombres, incluyendo medias, medianas, desviación estándar, y varianza.
+
+- Luego, empleando los resultados observados, indique si observa un patron de resultados similares a los resultados encontrados.
+
+
+```{r}
+
+# Escriba su código de respuesta aquí
+
+
+```
+
+- **Respuesta**
+  - `#....indicar su respuesta en las siguientes líneas, y borre el presente comentario`
+
+## Ejercicio 10. Tabla de Contingencia
+
+- Similares a las expectativas anteriores, se plantea que la prevalencia de depresión es mayor en mujeres. Calcule una tabla de contingencia donde se obtenga la proporción de mujeres y de hombres respectivamente. 
+
+- Emplee las variables creadas en el ejercicio 7, una de las cuales clasifica a los casos con o sin riesgo de depresión y la otra identifica casos de mujeres y hombres.
+
+```{r}
+
+# Escriba su código de respuesta aquí
+
+
+```
+
+## Ejercicio 11. Proporción por grupo.
+
+- La polivictimización (variable `poli`) es un factor de riesgo de calidad de vida grave. Esta, identifica a las personas que han vivenciado diferentes formas de violencia durante su trayectoria vital. Esto puede incluir asaltos con violencia, abusos por parte de cuidadores, por parte de pares, abuso sexual, entre otras formas de acoso.
+
+- Calcule qué proporción de "polivictimas" y "no polivictimas" se encontraría en riesgo de depresión (19 puntos o más).
+
+```{r}
+
+# Escriba su código de respuesta aquí
+
+```
+- **Respuesta**
+  - `#....indicar su respuesta en las siguientes líneas, y borre el presente comentario`
